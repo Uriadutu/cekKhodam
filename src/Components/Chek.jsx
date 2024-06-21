@@ -82,8 +82,8 @@ const Chek = () => {
                 >
                   Tambah
                 </Link>
-                <h1 className="absolute bottom-0 text-[5px] right-2 text-white">
-                  By : Celcius•TM
+                <h1 className="absolute bottom-0 right-2 text-white sm:text-xs lg:text-base">
+                  Celcius•TM
                 </h1>
               </div>
             </form>
