@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import BG from "../img/bg-khodam.webp";
+import BG from "../img/latar.jpg";
 import { Link } from "react-router-dom";
 import { db } from "../Config/Database";
 import { onValue, ref } from "firebase/database";
@@ -8,6 +8,7 @@ const Chek = () => {
   const [khodam, setKhodam] = useState("");
   const [keunggulan, setKeunggulan] = useState("");
   const [inputValue, setInputValue] = useState("");
+  const [submittedName, setSubmittedName] = useState("");
 
   const handleInput = (e) => {
     setInputValue(e.target.value);
@@ -39,7 +40,11 @@ const Chek = () => {
           setKhodam(randomKhodam.nama);
           setKeunggulan(randomKhodam.keunggulan);
         }
+
+        // Set nama yang di-submit untuk ditampilkan
+        setSubmittedName(inputValue);
       } else {
+        alert("Tidak ada data Khodam yang tersedia.");
       }
     });
 
@@ -54,10 +59,10 @@ const Chek = () => {
         style={{ backgroundImage: `url(${BG})` }}
       >
         <div className="w-full flex justify-center items-center flex-grow relative">
-          <div className="bg-white rounded-t-md bg-opacity-50 p-8 sm:p-10 md:p-12 lg:p-16 relative z-10 max-w-3xl w-full mx-auto">
+          <div className="bg-gray-600 rounded-t-md bg-opacity-70 p-8 sm:p-10 md:p-12 lg:p-16 relative z-10 max-w-3xl w-full mx-auto">
             <form onSubmit={handleCheck}>
               <div className="field">
-                <h1 className="text-3xl mb-4 p-2 uppercase font-bold text-center">
+                <h1 className="text-3xl mb-4 p-2 uppercase font-bold text-center text-white">
                   Cek Khodam
                 </h1>
                 <input
@@ -82,20 +87,25 @@ const Chek = () => {
                 >
                   Tambah
                 </Link>
-                <h1 className="absolute bottom-0 right-2 text-white sm:text-xs lg:text-base">
+                {/* <h1 className="absolute bottom-0 right-2 text-white sm:text-xs lg:text-base">
                   Celcius•TM
-                </h1>
+                </h1> */}
               </div>
             </form>
           </div>
         </div>
         <div className="bg-gray-300 w-full flex justify-center p-2 text-center text-2xl mb-3">
           <div className="">
-            <h1 className="border-b-2 border-red-600 font-bold p-3">
-              Khodam : {khodam}
-            </h1>
+            <div className="">
+              <h1 className="border-b-2 border-red-600 font-bold p-3">
+                <span className="text-red-600 uppercase font-extrabold">
+                  {submittedName && ` ${submittedName}`} {" "}
+                </span> 
+                Khodam Anda {khodam}
+              </h1>
+            </div>
             <h1 className="max-w-2xl mx-auto break-words">
-              Keunggulan : {keunggulan}
+              Keunggulan: {keunggulan}
             </h1>
           </div>
         </div>

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import {db} from "../Config/Database";
 import { ref, set, push } from "firebase/database";
-import BG from "../img/bg-khodam.webp";
+import BG from "../img/bg-add.jpg";
 import { Link } from "react-router-dom";
 
 const Add = () => {
